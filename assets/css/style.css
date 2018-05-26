@@ -1,0 +1,36 @@
+.container {
+  background: blue;
+  color: white;
+  padding: 10px 0 10px 0;
+}
+h1 {
+  text-align: center;
+  background: blue;
+  color: white;
+}
+h2 {
+  color: white;
+}
+hr {
+  border-color: white;
+}
+h3:hover {
+  background: white;
+  color: blue;
+}
+.game-panel {
+  background: lightgreen;
+  height: 400px; width: 800px;
+  margin: auto;
+  padding-top: 100px;
+
+}
+#start-button,
+#answers {
+  width: 400px;
+  margin: auto;
+  text-align: center;
+  background: blue;
+  color: white;
+  padding: 20px 0 20px 0;
+}
