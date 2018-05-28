@@ -1,12 +1,14 @@
 .container {
   background: blue;
   color: white;
-  padding: 10px 0 160px 0;
+  padding: 10px 0 48px 0;
 }
 h1 {
   text-align: center;
   background: blue;
   color: white;
+  margin: 0;
+  
 }
 h2 {
   color: white;
@@ -14,24 +16,33 @@ h2 {
 hr {
   border-color: white;
 }
-h3:hover {
+h3:hover,
+h2:hover {
   background: white;
   color: blue;
 }
 .game-panel {
   background: lightgreen;
-  height: 500px; width: 800px;
+  height: 530px; width: 800px;
   margin: auto;
-  padding-top: 100px;
+  margin-top: 80px;
+  padding-top: 30px;
 
 }
 #start-button,
 #answers,
 #timer {
-  width: 400px;
+  width: 420px;
   margin: auto;
   text-align: center;
   background: blue;
   color: white;
   padding: 20px 0 20px 0;
 }
+.title {
+  font-size: 24px;
+  margin: 0;
+}
+
+
+
