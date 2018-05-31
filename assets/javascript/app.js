@@ -7,9 +7,10 @@ $(document).ready(function () {
   var incorrect = 0;
   var timedOut = 0;
   var timerId;
+  var started = false;
   var game = {
     trivia: {
-      questions: ["What is the 'A.C.' stand for in A.C. Slater's name?",
+      questions: ["What does the 'A. C.' in Slater's name stand for?",
         "What is the name of the fictional university that Jessie Spano longed to attend?",
         "What is the name of the gang's rock band?",
         "Which school was Bayside's rival?",
@@ -34,12 +35,12 @@ $(document).ready(function () {
     }
   }
   var timeLeft = 30;
-  var tempAnswers = [0, 1, 2, 3];
   var nextQuestion = 0;
+  var guess = "";
   //Functions
   //=========================================================================================
 
-  //Countdown Timer starts and displays
+  //Countdown Timer displays and runs
   function countdown() {
     if (timeLeft == 0) {
       clearTimeout(timerId);
@@ -50,35 +51,37 @@ $(document).ready(function () {
   }
   function checker(guessed) {
 
-    if (guessed === game.trivia.answers[0]) {
+    if (guessed === game.trivia.answers[nextQuestion][0]) {
       alert("correct!");
-    } else if (x !== game.trivia.answers[0]) {
+    } else if (guessed !== game.trivia.answers[nextQuestion[0]]) {
       alert("incorrect");
     } else {
       alert("Timed Out!");
     }
+    nextQuestion++;
   }
 
 
 
 
-  //Clicking the START button shuffles the questions
+  //Clicking the START button displays the first question and answer choices
   $("#start-button").on("click", function () {
+    if (started === false) {
+      timerId = setInterval(countdown, 1000);
 
-    timerId = setInterval(countdown, 1000);
+      $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
+      $("#start-button").html("<h1>" + game.trivia.questions[nextQuestion] + "</h1><hr>");
 
-    $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
-    $("#start-button").html("<h1>" + game.trivia.questions[nextQuestion] + "</h1><hr>");
-
-    for (var i = 0; i < 4; i++) {
-      $("#answers").append("<h3>" + game.trivia.answers[nextQuestion][i] + "</h3>");
+      for (var i = 0; i < 4; i++) {
+        $("#choices").append("<h3 class='answer'>" + game.trivia.answers[nextQuestion][i] + "</h3>");
+      }
     }
-    nextQuestion++;
-
+    started = true;
   })
 
-  var guess = $("#answers").on("click", function () {
-    console.log(guess);
+  $("#choices").on("click", function () {
+    guess = $(".answer").text();
+    alert(guess);
     checker(guess);
   })
 
