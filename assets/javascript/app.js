@@ -19,24 +19,23 @@ $(document).ready(function () {
         "Who played Screech's girlfriend, Violet?",
         "What was Lisa's mother's occupation?",
         "What was Zack's SAT score?"],
-      answers: {
-        a0: ["Albert Clifford", "Alfred Charlie", "Ace Corbin", "Alan Chuck"],
-        a1: ["Stansbury University", "Springfield University", "University of Los Angeles", "Starfleet Academy"],
-        a2: ["Zack Attack", "The Screechers", "'A.C.' and the Sunshine Band", "Lisa and the Turtles"],
-        a3: ["Valley Bulldogs", "Westdale Bears", "Polk Panthers", "Ridgemont Wolves"],
-        a4: ["Rod Belding", "Kip Belding", "Tony Crane", "Nigel Belding"],
-        a5: ["U2", "Michael Jackson", "Billy Idol", "Smashing Pumpkins"],
-        a6: ["Turns skin maroon", "grows unwanted hair", "smells like garbage", "causes hiccups"],
-        a7: ["Tori Spelling", "Soleil Moon Frye", "Leah Remini", "Shannon Daugherty"],
-        a8: ["A surgeon", "A lawyer", "A banker", "An actress"],
-        a9: ["1502", "701", "1000", "1130"]
-      }
+      answers: [
+        ["Albert Clifford", "Alfred Charlie", "Ace Corbin", "Alan Chuck"],
+        ["Stansbury University", "Springfield University", "University of Los Angeles", "Starfleet Academy"],
+        ["Zack Attack", "The Screechers", "'A.C.' and the Sunshine Band", "Lisa and the Turtles"],
+        ["Valley Bulldogs", "Westdale Bears", "Polk Panthers", "Ridgemont Wolves"],
+        ["Rod Belding", "Kip Belding", "Tony Crane", "Nigel Belding"],
+        ["U2", "Michael Jackson", "Billy Idol", "Smashing Pumpkins"],
+        ["Turns skin maroon", "grows unwanted hair", "smells like garbage", "causes hiccups"],
+        ["Tori Spelling", "Soleil Moon Frye", "Leah Remini", "Shannon Daugherty"],
+        ["A surgeon", "A lawyer", "A banker", "An actress"],
+        ["1502", "701", "1000", "1130"]
+      ]
     }
   }
   var timeLeft = 30;
   var tempAnswers = [0, 1, 2, 3];
   var nextQuestion = 0;
-
   //Functions
   //=========================================================================================
 
@@ -49,46 +48,47 @@ $(document).ready(function () {
       $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
     }
   }
-  // function checker () {
-  //   if (x === y) {
-  //     alert("correct!");
-  //   } else if (x !== y) {
-  //     alert("incorrect");
-  //   } else {
-  //     alert("Timed Out!");
-  //   }
-  // }
+  function checker(guessed) {
 
-  
-  
+    if (guessed === game.trivia.answers[0]) {
+      alert("correct!");
+    } else if (x !== game.trivia.answers[0]) {
+      alert("incorrect");
+    } else {
+      alert("Timed Out!");
+    }
+  }
+
+
+
 
   //Clicking the START button shuffles the questions
   $("#start-button").on("click", function () {
-    
+
     timerId = setInterval(countdown, 1000);
 
     $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
     $("#start-button").html("<h1>" + game.trivia.questions[nextQuestion] + "</h1><hr>");
-  
+
     for (var i = 0; i < 4; i++) {
-      $("#answers").append("<h3>" + game.trivia.answers.a0[i] + "</h3>");
+      $("#answers").append("<h3>" + game.trivia.answers[nextQuestion][i] + "</h3>");
     }
     nextQuestion++;
 
   })
 
-  $("#answers").on("click", function() {
-    var guess = $("#answers").val();
+  var guess = $("#answers").on("click", function () {
     console.log(guess);
+    checker(guess);
   })
 
 
   //Shuffles Array of Questions and Answers
-  function shuffle (array) {
+  function shuffle(array) {
     var i = 0
       , j = 0
       , temp = null
-  
+
     for (i = array.length - 1; i > 0; i -= 1) {
       j = Math.floor(Math.random() * (i + 1))
       temp = array[i]
