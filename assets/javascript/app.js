@@ -73,17 +73,19 @@ $(document).ready(function () {
       $("#start-button").html("<h1>" + game.trivia.questions[nextQuestion] + "</h1><hr>");
 
       for (var i = 0; i < 4; i++) {
-        $("#choices").append("<h3 class='answer'>" + game.trivia.answers[nextQuestion][i] + "</h3>");
+        var newAnswer = $("<h3>" + game.trivia.answers[nextQuestion][i] + "</h3>")
+        $("#choices").append(newAnswer);
+        $(newAnswer).attr("value", game.trivia.answers[nextQuestion][i]);
       }
     }
     started = true;
+    $("#choices").on("click", function () {
+      guess = $(this).val();
+      alert(guess);
+      checker(guess);
+    })
   })
 
-  $("#choices").on("click", function () {
-    guess = $(".answer").text();
-    alert(guess);
-    checker(guess);
-  })
 
 
   //Shuffles Array of Questions and Answers
