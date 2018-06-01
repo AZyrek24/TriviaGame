@@ -47,6 +47,7 @@ $(document).ready(function () {
       timedOut++;
       timeLeft = 30;
       $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
+      nextQuestion++;
       newQuestion();
     } else {
       timeLeft--;
@@ -93,7 +94,7 @@ $(document).ready(function () {
   //Displays Game Score at end of questions
   function gameScore() {
     $(".game-panel").empty();
-    $(".game-panel").html("<h1>#Correct: " + correct + "</h1><hr><h1>#Incorrect: " + incorrect + "</h1><hr><h1>#Timed Out: " + timedOut +"</h1>")
+    $(".game-panel").html("<h1>#Correct: " + correct + "</h1><h1>#Incorrect: " + incorrect + "</h1><h1>#Timed Out: " + timedOut +"</h1>")
   }
 
   //Shuffles Array of Questions and Answers
