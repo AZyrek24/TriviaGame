@@ -43,7 +43,9 @@ $(document).ready(function () {
   //Countdown Timer displays and runs
   function countdown() {
     if (timeLeft == 0) {
-      clearTimeout(timerId);
+      timedOut++;
+      timeLeft = 30;
+      $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
     } else {
       timeLeft--;
       $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
@@ -52,18 +54,20 @@ $(document).ready(function () {
   function checker(guessed) {
 
     if (guessed === game.trivia.answers[nextQuestion][0]) {
-      alert("correct!");
+      correct++;
+      nextQuestion++;
+      newQuestion();
     } else if (guessed !== game.trivia.answers[nextQuestion[0]]) {
-      alert("incorrect");
-    } else {
-      alert("Timed Out!");
+      incorrect++;
+      nextQuestion++;
+      newQuestion();
     }
-    nextQuestion++;
+
   }
 
 
 
-
+  var newAnswer;
   //Clicking the START button displays the first question and answer choices
   $("#start-button").on("click", function () {
     if (started === false) {
@@ -73,15 +77,15 @@ $(document).ready(function () {
       $("#start-button").html("<h1>" + game.trivia.questions[nextQuestion] + "</h1><hr>");
 
       for (var i = 0; i < 4; i++) {
-        var newAnswer = $("<h3>" + game.trivia.answers[nextQuestion][i] + "</h3>")
+
+        newAnswer = $("<h3>" + game.trivia.answers[nextQuestion][i] + "</h3>")
         $("#choices").append(newAnswer);
         $(newAnswer).attr("value", game.trivia.answers[nextQuestion][i]);
       }
     }
     started = true;
-    $("#choices").on("click", function () {
-      guess = $(this).val();
-      alert(guess);
+    $("h3").on("click", function () {
+      guess = $(this).attr("value");
       checker(guess);
     })
   })
@@ -102,7 +106,27 @@ $(document).ready(function () {
     }
     return array[j];
   }
+  //Displays new question and checks answer clicked
+  function newQuestion() {
+    $("#timer").html("<h1>Time: " + timeLeft + "</h1>");
+    $("#start-button").html("<h1>" + game.trivia.questions[nextQuestion] + "</h1><hr>");
+    $("#choices").html("");
+    
+    for (var i = 0; i < 4; i++) {
+      
+      newAnswer = $("<h3>" + game.trivia.answers[nextQuestion][i] + "</h3>")
+      $("#choices").append(newAnswer);
+      $(newAnswer).attr("value", game.trivia.answers[nextQuestion][i]);
+    }
+    $("h3").on("click", function () {
+      guess = $(this).attr("value");
+      checker(guess);
+    })
+    timeLeft = 30;
+  }
 })
+
+
 
 
 

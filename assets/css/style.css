@@ -1,5 +1,5 @@
 .container {
-  background: blue;
+  background-image: url(../images/saved-by-the-bell-background.jpg);
   color: white;
   padding: 10px 0 48px 0;
 }
@@ -21,8 +21,12 @@ h2:hover {
   background: white;
   color: blue;
 }
+.title h1 {
+  background-image: url(../images/saved-by-the-bell-background.jpg);
+  color: white;
+}
 .game-panel {
-  background: lightgreen;
+  background-image: url(../images/savedByTheBell2.jpg);
   height: 530px; width: 800px;
   margin: auto;
   margin-top: 80px;
