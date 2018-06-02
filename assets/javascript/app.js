@@ -27,9 +27,9 @@ $(document).ready(function () {
         ["Valley Bulldogs", "Westdale Bears", "Polk Panthers", "Ridgemont Wolves"],
         ["Rod Belding", "Kip Belding", "Tony Crane", "Nigel Belding"],
         ["U2", "Michael Jackson", "Billy Idol", "Smashing Pumpkins"],
-        ["Turns skin maroon", "grows unwanted hair", "smells like garbage", "causes hiccups"],
+        ["Turns skin maroon", "Grows unwanted hair", "Smells like garbage", "Causes hiccups"],
         ["Tori Spelling", "Soleil Moon Frye", "Leah Remini", "Shannon Daugherty"],
-        ["A surgeon", "A lawyer", "A banker", "An actress"],
+        ["A Surgeon", "A Lawyer", "A Banker", "An Actress"],
         ["1502", "701", "1000", "1130"]
       ]
     }
